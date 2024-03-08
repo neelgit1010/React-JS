@@ -58,7 +58,7 @@ function App() {
             max={25}
             value={length}
             onChange={e => { setLength(e.target.value) }}
-            className=" gap-4 cursor-pointer"
+            className=" cursor-pointer"
           />
           <label className=" font-bold mx-2 text-slate-700 text-xl">Length : {length}</label>
         </div>
