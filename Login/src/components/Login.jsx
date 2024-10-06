@@ -6,6 +6,10 @@ const Login = ({ showPassword, setShowPassword }) => {
   const navigate = useNavigate();
   const openDashboard = (e) => {
     e.preventDefault();
+    if (e.target.username.value !== "root" || e.target.password.value !== "password") {
+      alert("Invalid username or password");
+      return;
+    }
     navigate("/dashboard");
   };
 
@@ -16,11 +20,12 @@ const Login = ({ showPassword, setShowPassword }) => {
         <h1>Login</h1>
         <div className="input-box">
           <FaUserAlt className="icon" />
-          <input type="text" placeholder="Username" required />
+          <input type="text" name ="username" placeholder="Username" required />
         </div>
         <div className="input-box">
           <FaLock className="icon" />
           <input
+            name="password"
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             required

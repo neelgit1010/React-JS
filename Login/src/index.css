@@ -140,3 +140,22 @@
 .sidebar{
     min-height: 100vh;
 }
+
+/* Sidebar.css */
+.sidebar {
+    transition: width 0.3s ease; /* Smooth width transition */
+    overflow: hidden; /* Prevent overflow issues */
+  }
+  
+  .sidebar a, .sidebar ul {
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+  }
+  
+  .sidebar.collapsed a, .sidebar.collapsed ul {
+    opacity: 0; /* Hide text when collapsed */
+  }
+  
+  .sidebar.expanded a, .sidebar.expanded ul {
+    opacity: 1; /* Show text when expanded */
+  }
+  
