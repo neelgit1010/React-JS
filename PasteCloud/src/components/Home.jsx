@@ -32,7 +32,7 @@ const Home = () => {
 
     const allPastes = JSON.parse(localStorage.getItem('pastes')) || []
     if(allPastes.some(paste => paste.title === title)){
-      toast.error('Paste with same title already exists')
+      toast.error('Paste with same title or content already exists')
       return
     }
 

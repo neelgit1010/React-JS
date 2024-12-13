@@ -13,6 +13,8 @@ export const pasteReducer = createSlice({
     reducers:{
         addPaste: (state, action) => {
            const paste = action.payload
+           paste.title = paste.title.trim()
+           paste.textContent = paste.textContent.trim()
            state.pastes.push(paste)
            localStorage.setItem('pastes', JSON.stringify(state.pastes))
         },
@@ -25,6 +27,8 @@ export const pasteReducer = createSlice({
         
         updatePaste: (state, action) => {
             const paste = action.payload
+            paste.title = paste.title.trim()
+            paste.textContent = paste.textContent.trim()
             const index = state.pastes.findIndex(p => p._id === paste._id)
             state.pastes[index] = paste
             localStorage.setItem('pastes', JSON.stringify(state.pastes))
