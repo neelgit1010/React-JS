@@ -26,8 +26,8 @@ const PasteCard = ({id, title, textContent, createdAt}) => {
   }
   return (
     <div className="mt-4 rounded-md bg-gray-700 p-4">
-      <h2>{title}</h2>
-      <p>{textContent}</p>
+      <h2 className="text-3xl text-semibold mb-4">{title}</h2>
+      <p>{textContent.slice(0, 100)}</p>
 
       <div className="flex flex-col md:justify-end">
         <div className="flex gap-2 mt-4 justify-end mr-2">
