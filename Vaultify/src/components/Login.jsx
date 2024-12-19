@@ -16,7 +16,7 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(login(user.ac_no));
+    dispatch(login(user));
   },[user])
   const authenticate = (e) => {
     e.preventDefault();
@@ -27,8 +27,11 @@ const Login = () => {
       }
     }
     // console.log(currUser)
-    if (currUser !== null) {
+    if (!currUser) {
+      toast.error("Invalid Credentials")
+    }else{
       toast.success("Logged in successfully!!")
+      localStorage.setItem("currUser", JSON.stringify(currUser))
       navigate("/dashboard");
     }
   };

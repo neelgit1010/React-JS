@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../features/userSlice";
 import toast from "react-hot-toast";
@@ -7,13 +7,15 @@ import toast from "react-hot-toast";
 const Register = () => {
 
   const navigate = useNavigate()
+
+  const allUsers = useSelector( state => state.users.users)
   const [user, setUser] = useState(
     {
       ac_no: "",
       ac_holder: "",
       pin: "",
       ifsc: "",
-      blnc: 0.00,
+      blnc: "0.00",
       loan_sts: true,
     }
   )
@@ -29,6 +31,11 @@ const Register = () => {
         toast.error("All fields are needed")
         return
       }
+    }
+
+    if(allUsers.some(e => e.ac_no === user.ac_no)){
+      toast.error("Account alread exists, Kindly Login!")
+      return
     }
     dispatch(createUser(user))
     navigate('/')
